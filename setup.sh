@@ -1,5 +1,6 @@
 #!/bin/bash 
 
+source variable.sh
 source functions.sh
 echo 'Options:
      1. create all services 
