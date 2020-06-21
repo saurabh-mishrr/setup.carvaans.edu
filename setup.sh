@@ -2,6 +2,10 @@
 
 source variable.sh
 source functions.sh
+for i in ${SERVICES_LIST[@]}
+do 
+    source ${i}.sh
+done
 echo 'Options:
      1. create all services 
      2. start all services

@@ -1,9 +1,9 @@
 CURRENT_PATH="$(pwd)"
 NETWORK_NAME="carvaans_network" 
 
-API_DOCKERFILE=${CURRENT_PATH}/setup/api/Dockerfile
-CARVAANS_NGINX_CONF=${CURRENT_PATH}/setup/api
-API_CONTAINER_NAME=edu.carvaans.api
+NGINX_DOCKERFILE=${CURRENT_PATH}/setup/api/Dockerfile
+NGINX_CONF=${CURRENT_PATH}/setup/api
+NGINX_CONTAINER_NAME=edu.carvaans.api
 API_DIR=${CURRENT_PATH}/api
 API_SETUP_FOLDER=${CURRENT_PATH}/setup/api
 
@@ -16,8 +16,10 @@ NODE_CONTAINER_NAME=edu.carvaans.app
 REDIS_DOCKERFILE=${CURRENT_PATH}/setup/cache/Dockerfile
 REDIS_CONTAINER_NAME=edu.carvaans.cache
 
-DB_DOCKERFILE=${CURRENT_PATH}/setup/db/Dockerfile
-DB_CONTAINER_NAME=edu.carvaans.db
-DB_ENV_PATH=${CURRENT_PATH}/setup/db
+POSTGRES_DOCKERFILE=${CURRENT_PATH}/setup/db/Dockerfile
+POSTGRES_CONTAINER_NAME=edu.carvaans.db
+POSTGRES_ENV_PATH=${CURRENT_PATH}/setup/db
 
-CARVAANS_EDU_DIR=$CURRENT_PATH/../carvaans.edu
+SERVICES_LIST=(php nginx node redis postgres)
+
+PROJECT_DIR=$CURRENT_PATH/../carvaans.edu
