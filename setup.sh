@@ -1,11 +1,19 @@
 #!/bin/bash 
 
-source_path=$(pwd)
-export API_DOCKERFILE=${source_path}/setup/api/Dockerfile
-export API_CONTAINER_NAME=edu.carvaans.api
-export PHP_CONTAINER_NAME=edu.carvaans.php
-export CARVAANS_NGINX_CONF=${source_path}/setup/api
-export API_DIR=${source_path}/api
-export API_SETUP_FOLDER=${source_path}/setup/api
-#setting up API
-docker-compose up -d
+source functions.sh
+echo 'Options:
+     1. create all services 
+     2. start all services
+     3. stop all services
+     4. remove all services'
+
+
+
+read -p "Enter your choice: " option
+
+case $option in
+    1) create_all_services ;;
+    2) start_all_services  ;;
+    3) stop_all_services   ;;
+    4) remove_all_services ;;
+esac
