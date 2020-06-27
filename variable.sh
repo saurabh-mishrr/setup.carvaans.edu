@@ -1,25 +1,39 @@
 CURRENT_PATH="$(pwd)"
-NETWORK_NAME="carvaans_network" 
+NETWORK_NAME="cactus_network" 
+GIT_REPO_LINK="git@github.com-work:cactuscommunications/dragonglass.git"
+DOMAIN="local.crm.cactusglobal.com"
+NETWORK_SUBNET="192.168.31.0/26"
+PHP_IP="192.168.31.8"
+NGINX_IP="192.168.31.9"
+POSTGRES_IP="192.168.31.19"
+NODE_IP="192.168.31.20"
+REDIS_IP="192.168.31.10"
 
-NGINX_DOCKERFILE=${CURRENT_PATH}/setup/api/Dockerfile
-NGINX_CONF=${CURRENT_PATH}/setup/api
-NGINX_CONTAINER_NAME=edu.carvaans.api
-API_DIR=${CURRENT_PATH}/api
-API_SETUP_FOLDER=${CURRENT_PATH}/setup/api
+PHP_PORT="9000"
+NGINX_PORT="5000:80"
+POSTGRES_PORT="5432:5432"
+NODE_PORT="5001:3000"
+REDIS_PORT=""
 
-PHP_DOCKERFILE=${CURRENT_PATH}/setup/api/Dockerfile-PHP.dockerfile
-PHP_CONTAINER_NAME=edu.carvaans.php
+NGINX_DOCKERFILE=${CURRENT_PATH}/setup/nginx/Dockerfile
+NGINX_CONF=${CURRENT_PATH}/setup/nginx
+NGINX_CONTAINER_NAME=${DOMAIN}.node
+# API_DIR=${CURRENT_PATH}/node-php
+# API_SETUP_FOLDER=${CURRENT_PATH}/setup/node-php
 
-NODE_DOCKERFILE=${CURRENT_PATH}/setup/app/Dockerfile
-NODE_CONTAINER_NAME=edu.carvaans.app
+PHP_DOCKERFILE=${CURRENT_PATH}/setup/php/Dockerfile
+PHP_CONTAINER_NAME=${DOMAIN}.php
 
-REDIS_DOCKERFILE=${CURRENT_PATH}/setup/cache/Dockerfile
-REDIS_CONTAINER_NAME=edu.carvaans.cache
+NODE_DOCKERFILE=${CURRENT_PATH}/setup/node/Dockerfile
+NODE_CONTAINER_NAME=${DOMAIN}.node
 
-POSTGRES_DOCKERFILE=${CURRENT_PATH}/setup/db/Dockerfile
-POSTGRES_CONTAINER_NAME=edu.carvaans.db
-POSTGRES_ENV_PATH=${CURRENT_PATH}/setup/db
+REDIS_DOCKERFILE=${CURRENT_PATH}/setup/redis/Dockerfile
+REDIS_CONTAINER_NAME=${DOMAIN}.redis
+
+POSTGRES_DOCKERFILE=${CURRENT_PATH}/setup/postgres/Dockerfile
+POSTGRES_CONTAINER_NAME=${DOMAIN}.postgres
+POSTGRES_ENV_PATH=${CURRENT_PATH}/setup/postgres
 
 SERVICES_LIST=(php nginx node redis postgres)
 
-PROJECT_DIR=$CURRENT_PATH/../carvaans.edu
+PROJECT_DIR=$CURRENT_PATH/../${DOMAIN}

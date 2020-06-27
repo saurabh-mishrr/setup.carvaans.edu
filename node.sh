@@ -8,13 +8,13 @@ setup_node() {
 
     create_node_command='create 
             -it
-            -p 5001:3000
+            -p '${NODE_PORT}'
             -v '${PROJECT_DIR}'/app:/app:rw
             -w /app
             --hostname '${NODE_CONTAINER_NAME}'
             --name '${NODE_CONTAINER_NAME}'
             --network '${NETWORK_NAME}'
-            --ip 173.20.1.4
+            --ip '${NODE_IP}'
             '${NODE_CONTAINER_NAME}
 
     docker $create_node_command

@@ -1,11 +1,11 @@
 clone_repo() {
     mkdir -p $PROJECT_DIR
-    git clone git@github.com:saurabh-mishrr/carvaans.edu.git $PROJECT_DIR
+    git clone ${GIT_REPO_LINK} $PROJECT_DIR
 }
 
 create_network() {
     create_network_command='network create 
-            --subnet "173.20.1.0/10" '${NETWORK_NAME}
+            --subnet '${NETWORK_SUBNET} ${NETWORK_NAME}
     
     docker $create_network_command
 }

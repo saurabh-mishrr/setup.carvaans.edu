@@ -7,12 +7,13 @@ setup_redis() {
 
     create_cache_command='create
         -t
+        -p '${REDIS_PORT}' 
         -v '${PROJECT_DIR}'/cache_data:/data
         -w /data
         --hostname '${REDIS_CONTAINER_NAME}'
         --name '${REDIS_CONTAINER_NAME}'
         --network '${NETWORK_NAME}'
-        --ip 173.20.1.5
+        --ip '${REDIS_IP}'
         '${REDIS_CONTAINER_NAME}' redis-server --appendonly yes'
     
     docker $create_cache_command

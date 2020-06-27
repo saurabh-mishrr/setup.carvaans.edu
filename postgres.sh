@@ -8,12 +8,13 @@ setup_postgres() {
 
     create_db_command='create 
         -t
+        -p '${POSTGRES_PORT}' 
         --env-file '${POSTGRES_ENV_PATH}'/.env
         -v '${PROJECT_DIR}'/data:/var/lib/postgresql/data
         --hostname '${POSTGRES_CONTAINER_NAME}'
         --name '${POSTGRES_CONTAINER_NAME}'
         --network '${NETWORK_NAME}'
-        --ip 173.20.1.6
+        --ip '${POSTGRES_IP}'
         '${POSTGRES_CONTAINER_NAME}' postgres'
     
     docker $create_db_command

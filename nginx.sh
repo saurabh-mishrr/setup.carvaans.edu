@@ -9,15 +9,14 @@ setup_nginx() {
 
     create_api_command='create 
             -it
-            -p 5000:80 
-            -v '${PROJECT_DIR}'/api:/app:rw 
+            -p '${NGINX_PORT}' 
+            -v '${PROJECT_DIR}':/app:rw 
             -v '${NGINX_CONF}'/default.conf:/etc/nginx/conf.d/default.conf:ro 
-            -v '${PROJECT_DIR}'/api/public:/usr/share/nginx/html:rw 
             -w /app 
             --hostname '${NGINX_CONTAINER_NAME}' 
             --name '${NGINX_CONTAINER_NAME}' 
             --network '${NETWORK_NAME}'
-            --ip 173.20.1.2
+            --ip '${NGINX_IP}'
             '${NGINX_CONTAINER_NAME}
 
     

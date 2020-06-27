@@ -9,13 +9,14 @@ setup_php() {
 
     create_php_command='create 
             -it 
+            -p '${PHP_PORT}' 
             -v '${PROJECT_DIR}'/api:/app:rw 
             -v '${HOME}'/.ssh:/root/.ssh:ro
             -w /app 
             --hostname '${PHP_CONTAINER_NAME}' 
             --name '${PHP_CONTAINER_NAME}' 
             --network '${NETWORK_NAME}'
-            --ip 173.20.1.3
+            --ip '${PHP_IP}'
             '${PHP_CONTAINER_NAME}
     
     docker $create_php_command
