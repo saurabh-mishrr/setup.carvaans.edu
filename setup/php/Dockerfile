@@ -8,6 +8,11 @@ RUN apt-get update && apt-get install -y vim \
   && docker-php-ext-configure zip --with-libzip \
   && docker-php-ext-install zip
 
+RUN pecl install -o -f redis \
+  &&  rm -rf /tmp/pear \
+  &&  docker-php-ext-enable redis
+
+
 VOLUME [ "/app", "/root/.ssh"]
 
 RUN curl -sS https://getcomposer.org/installer | php -- \
