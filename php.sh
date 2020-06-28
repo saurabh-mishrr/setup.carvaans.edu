@@ -3,7 +3,7 @@ setup_php() {
         --no-cache
         --build-arg PROJECT_DIR='${PROJECT_DIR}' 
         -t '${PHP_CONTAINER_NAME}' 
-        -f '${PHP_DOCKERFILE}' .'
+        -f '${PHP_DOCKERFILE}' '${PROJECT_DIR}'/api'
     
     docker $build_php_command
 

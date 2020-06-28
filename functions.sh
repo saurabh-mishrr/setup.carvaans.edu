@@ -1,29 +1,29 @@
 clone_repo() {
     mkdir -p $PROJECT_DIR
-    git clone ${GIT_REPO_LINK} $PROJECT_DIR
+    git clone $GIT_REPO_LINK $PROJECT_DIR
+    mkdir -p $PROJECT_DIR/data
+    mkdir -p $PROJECT_DIR/cache_data
 }
 
 create_network() {
     create_network_command='network create 
-            --subnet '${NETWORK_SUBNET} ${NETWORK_NAME}
-    
+            --subnet '$NETWORK_SUBNET' '$NETWORK_NAME
     docker $create_network_command
 }
 
 execute_services() {
-    docker exec -it ${NODE_CONTAINER_NAME} npm install
-    docker exec -it ${PHP_CONTAINER_NAME} composer install
+    docker exec -d $PHP_CONTAINER_NAME composer install
 }
 
 create_all_services() {
-    # clone_repo
+    clone_repo
     create_network
     for i in ${SERVICES_LIST[@]}
     do 
         setup_${i}
     done
     start_all_services
-    # execute_services
+    execute_services
 }
 
 start_all_services() {

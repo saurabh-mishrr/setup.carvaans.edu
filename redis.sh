@@ -1,7 +1,7 @@
 setup_redis() {
     build_cache_command='build 
         -t '${REDIS_CONTAINER_NAME}'
-        -f '${REDIS_DOCKERFILE}' .'
+        -f '${REDIS_DOCKERFILE}' '${PROJECT_DIR}'/cache_data'
 
     docker $build_cache_command
 

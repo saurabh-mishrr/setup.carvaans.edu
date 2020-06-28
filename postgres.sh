@@ -2,7 +2,7 @@ setup_postgres() {
     build_db_command='build 
         --no-cache
         -t '${POSTGRES_CONTAINER_NAME}'
-        -f '${POSTGRES_DOCKERFILE}' .'
+        -f '${POSTGRES_DOCKERFILE}' '${PROJECT_DIR}'/data'
 
     docker $build_db_command
 

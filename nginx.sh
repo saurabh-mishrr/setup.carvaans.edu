@@ -2,7 +2,7 @@ setup_nginx() {
     build_api_command='build 
         --no-cache
         -t '${NGINX_CONTAINER_NAME}'
-        -f '${NGINX_DOCKERFILE}' .'
+        -f '${NGINX_DOCKERFILE}' '${PROJECT_DIR}'/api'
 
 
     docker $build_api_command
@@ -10,7 +10,7 @@ setup_nginx() {
     create_api_command='create 
             -it
             -p '${NGINX_PORT}' 
-            -v '${PROJECT_DIR}':/app:rw 
+            -v '${PROJECT_DIR}'/api:/app:rw 
             -v '${NGINX_CONF}'/default.conf:/etc/nginx/conf.d/default.conf:ro 
             -w /app 
             --hostname '${NGINX_CONTAINER_NAME}' 
