@@ -1,18 +1,18 @@
 CURRENT_PATH="$(pwd)"
-GIT_REPO_LINK="git@github.com:saurabh-mishrr/carvaans.edu.git"
-DOMAIN="carvaans.edu"
-NETWORK_NAME=${DOMAIN}"_network" 
-NETWORK_SUBNET="172.16.12.0/26"
+GIT_REPO_LINK="https://github.com/saurabh-mishrr/htmltopdf.git"
+DOMAIN="api.cactuspdfgen.com"
+NETWORK_NAME="docbridge" 
+NETWORK_SUBNET="192.168.31.0/26"
 PHP_IP="172.16.12.8"
 NGINX_IP="172.16.12.9"
 POSTGRES_IP="172.16.12.19"
-NODE_IP="172.16.12.20"
+NODE_IP="192.168.31.21"
 REDIS_IP="172.16.12.10"
 
 PHP_PORT="9000"
 NGINX_PORT="5000:80"
 POSTGRES_PORT="5432:5432"
-NODE_PORT="5001:3000"
+NODE_PORT="5001:5001"
 REDIS_PORT="6379"
 
 NGINX_DOCKERFILE=${CURRENT_PATH}/setup/nginx/Dockerfile
@@ -34,6 +34,6 @@ REDIS_CONTAINER_NAME=${DOMAIN}.redis
 POSTGRES_DOCKERFILE=${CURRENT_PATH}/setup/postgres/Dockerfile
 POSTGRES_CONTAINER_NAME=${DOMAIN}.postgres
 POSTGRES_ENV_PATH=${CURRENT_PATH}/setup/postgres
-SERVICES_LIST=(redis postgres node php nginx)
+SERVICES_LIST=(node)
 
 PROJECT_DIR=$CURRENT_PATH/../${DOMAIN}
