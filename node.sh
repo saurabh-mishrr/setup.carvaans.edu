@@ -2,16 +2,16 @@ setup_node() {
     build_node_command='build 
         --no-cache
         -t '${NODE_CONTAINER_NAME}'
-        -f '${NODE_DOCKERFILE}' '${PROJECT_DIR}'/app'
+        -f '${NODE_DOCKERFILE}' '${PROJECT_DIR}''
     
     docker $build_node_command
 
-    create_node_command='create 
+    create_node_command='create
             -it
             -p '${NODE_PORT}'
-            -v '${PROJECT_DIR}'/app:/app:rw
-            -v /app/node_modules
-            -w /app
+            -v '${PROJECT_DIR}':/home/node/app:rw
+            -v '${PROJECT_DIR}/node_modules':/home/node/app/node_modules:rw
+            -w /home/node/app
             --hostname '${NODE_CONTAINER_NAME}'
             --name '${NODE_CONTAINER_NAME}'
             --network '${NETWORK_NAME}'

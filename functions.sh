@@ -16,14 +16,14 @@ execute_services() {
 }
 
 create_all_services() {
-    clone_repo
-    create_network
+     clone_repo
+    # create_network
     for i in ${SERVICES_LIST[@]}
     do 
         setup_${i}
     done
     start_all_services
-    execute_services
+    # execute_services
 }
 
 start_all_services() {
@@ -48,5 +48,5 @@ remove_all_services() {
         remove_${i}
     done
     
-    docker network rm ${NETWORK_NAME}
+    # docker network rm ${NETWORK_NAME}
 }
